@@ -8,9 +8,8 @@ async function connect() {
 
         await channel.consume("jobs", (msg) => {
             console.log(msg.content.toString());
-            channel.ackAll();
+            channel.ack(msg);
         });
-
     }
     catch (err) {
         console.error(`Something went wrong ${err}`);
